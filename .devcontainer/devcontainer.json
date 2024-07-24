@@ -1,0 +1,24 @@
+{
+    "name": "Anisble",
+    "build": {
+        "dockerfile": "../docker/Dockerfile"
+    },
+    "runArgs": [
+        "-v", "${env:SSH_AUTH_SOCK}:/ssh-agent","-e","SSH_AUTH_SOCK=/ssh-agent"
+    ],
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "settings": {
+                    "editor.formatOnSave": true,
+                    "files.insertFinalNewline": true
+                },
+                // Add the IDs of extensions you want installed when the container is created.
+                "extensions": [
+                    "ms-azuretools.vscode-docker",
+                    "redhat.ansible"
+                ]
+            }
+        }
+    }
+}
