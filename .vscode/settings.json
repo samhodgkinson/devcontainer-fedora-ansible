@@ -30,7 +30,6 @@
     "sync.pathPrefix": "",
     "eslint.autoFixOnSave": true,
     "editor.formatOnSave": false,
-    "editor.renderIndentGuides": true,
     "flow.useNPMPackagedFlow": true,
     "prettier.singleQuote": true,
     "prettier.printWidth": 80,
@@ -39,5 +38,6 @@
     "prettier.useTabs": false,
     "prettier.bracketSpacing": true,
     "sync.quietSync": false,
-    "workbench.colorTheme": "Monokai"
+    "workbench.colorTheme": "Monokai",
+    "editor.guides.indentation": true
   }
