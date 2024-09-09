@@ -29,7 +29,6 @@ RUN apt-get update \
        inetutils-ping \
        # Git for Source Control
        git \
-
     && apt-get clean \
     # Clean up apt cache
     && rm -Rf /var/lib/apt/lists/* \
