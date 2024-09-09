@@ -27,8 +27,13 @@ RUN apt-get update \
        openssh-client \
        # Allow Ping Tests \
        inetutils-ping \
+       # Git for Source Control
+       git \
+
     && apt-get clean \
+    # Clean up apt cache
     && rm -Rf /var/lib/apt/lists/* \
+    # Remove unnecessary files
     && rm -Rf /usr/share/doc && rm -Rf /usr/share/man
 RUN sed -i 's/^\($ModLoad imklog\)/#\1/' /etc/rsyslog.conf
 
