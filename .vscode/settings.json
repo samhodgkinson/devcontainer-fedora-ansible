@@ -38,6 +38,25 @@
     "prettier.useTabs": false,
     "prettier.bracketSpacing": true,
     "sync.quietSync": false,
-    "workbench.colorTheme": "Monokai",
-    "editor.guides.indentation": true
+    "workbench.colorTheme": "Tomorrow Night Blue",
+    "editor.guides.indentation": true,
+    "workbench.colorCustomizations": {
+      "activityBar.activeBackground": "#bd930b",
+      "activityBar.background": "#bd930b",
+      "activityBar.foreground": "#15202b",
+      "activityBar.inactiveForeground": "#15202b99",
+      "activityBarBadge.background": "#eedad0",
+      "activityBarBadge.foreground": "#15202b",
+      "commandCenter.border": "#e7e7e799",
+      "sash.hoverBorder": "#a38bd5",
+      "statusBar.background": "#bd930b",
+      "statusBar.foreground": "#e7e7e7",
+      "statusBarItem.hoverBackground": "#bd930b",
+      "statusBarItem.remoteBackground": "#bd930b",
+      "statusBarItem.remoteForeground": "#e7e7e7",
+      "titleBar.activeBackground": "#bd930b",
+      "titleBar.activeForeground": "#e7e7e7",
+      "titleBar.inactiveBackground": "#bd930b",
+      "titleBar.inactiveForeground": "#e7e7e799"
+    }
   }
