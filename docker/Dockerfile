@@ -1,58 +1,45 @@
-FROM ubuntu:20.04
+FROM fedora:40
 LABEL maintainer="Sam Hodgkinson"
 
 ARG DEBIAN_FRONTEND=noninteractive
-
-ENV pip_packages "ansible"
-
-# Install dependencies.
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-       apt-utils \
-       build-essential \
-       locales \
-       libffi-dev \
-       libssl-dev \
-       libyaml-dev \
-       python3-dev \
-       python3-setuptools \
-       python3-pip \
-       python3-yaml \
-       software-properties-common \
-       rsyslog systemd \
-       systemd-cron \
-       sudo \
-       iproute2 \
-       # Allowing SSH to Hosts
-       openssh-client \
-       # Allow Ping Tests \
-       inetutils-ping \
-       # Git for Source Control
-       git \
-    && apt-get clean \
-    # Clean up apt cache
-    && rm -Rf /var/lib/apt/lists/* \
-    # Remove unnecessary files
-    && rm -Rf /usr/share/doc && rm -Rf /usr/share/man
-RUN sed -i 's/^\($ModLoad imklog\)/#\1/' /etc/rsyslog.conf
-
-# Fix potential UTF-8 errors with ansible-test.
-RUN locale-gen en_US.UTF-8
-
-# Install Ansible via Pip.
-RUN pip3 install $pip_packages
-
-# COPY initctl_faker .
-# RUN chmod +x initctl_faker && rm -fr /sbin/initctl && ln -s /initctl_faker /sbin/initctl
-
-# Install Ansible inventory file.
-RUN mkdir -p /etc/ansible
-RUN echo "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
 
 # Remove unnecessary getty and udev targets that result in high CPU usage when using
 # multiple containers with Molecule (https://github.com/ansible/molecule/issues/1104)
 RUN rm -f /lib/systemd/system/systemd*udev* \
   && rm -f /lib/systemd/system/getty.target
+
+# Install dependencies.
+RUN dnf -y update \
+  && dnf -y install \
+     dnf-utils \
+     @development-tools \
+     glibc-langpack-en \
+     libffi-devel \
+     openssl-devel \
+     libyaml-devel \
+     python3-devel \
+     python3-setuptools \
+     python3-pip \
+     python3-pyyaml \
+     rsyslog \
+     systemd \
+     cronie \
+     sudo \
+     iproute \
+     openssh-clients \
+     iputils \
+     git \
+     --setopt=install_weak_deps=False \
+  && dnf clean all \
+  && dnf autoremove -y \
+  && rm -rf /usr/share/doc /usr/share/man
+
+#Install Ansible via Pip from requirements file.
+COPY ../requirements.txt /tmp/requirements.txt
+RUN pip3 install -r /tmp/requirements.txt
+
+# The imklog module is responsible for reading kernel log messages, and by commenting it out, it prevents the rsyslog service from loading that module and reduces resources needed by the container
+RUN sed -i 's/^\($ModLoad imklog\)/#\1/' /etc/rsyslog.conf
 
 VOLUME ["/sys/fs/cgroup", "/tmp", "/run"]
 CMD ["/lib/systemd/systemd"]
