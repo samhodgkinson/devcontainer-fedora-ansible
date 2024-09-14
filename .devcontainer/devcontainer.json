@@ -1,7 +1,8 @@
 {
     "name": "Anisble",
     "build": {
-        "dockerfile": "../docker/Dockerfile"
+        "dockerfile": "../docker/Dockerfile",
+        "context": ".."
     },
     "remoteUser": "root",
     "mounts": [
