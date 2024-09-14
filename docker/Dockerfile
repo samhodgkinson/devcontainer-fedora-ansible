@@ -6,10 +6,8 @@ ARG DEBIAN_FRONTEND=noninteractive
 # Remove unnecessary getty and udev targets that result in high CPU usage when using
 # multiple containers with Molecule (https://github.com/ansible/molecule/issues/1104)
 RUN rm -f /lib/systemd/system/systemd*udev* \
-  && rm -f /lib/systemd/system/getty.target
-
-# Install dependencies.
-RUN dnf -y update \
+  && rm -f /lib/systemd/system/getty.target \
+  && dnf -y update \
   && dnf -y install \
      dnf-utils \
      @development-tools \
@@ -17,6 +15,8 @@ RUN dnf -y update \
      libffi-devel \
      openssl-devel \
      libyaml-devel \
+  && dnf -y autoremove \
+  && dnf clean all \
      python3-devel \
      python3-setuptools \
      python3-pip \
@@ -34,12 +34,13 @@ RUN dnf -y update \
   && dnf autoremove -y \
   && rm -rf /usr/share/doc /usr/share/man
 
-#Install Ansible via Pip from requirements file.
-COPY ../requirements.txt /tmp/requirements.txt
-RUN pip3 install -r /tmp/requirements.txt
+# Install Ansible Core via Pip
+RUN pip3 install ansible-core==2.17
 
 # The imklog module is responsible for reading kernel log messages, and by commenting it out, it prevents the rsyslog service from loading that module and reduces resources needed by the container
 RUN sed -i 's/^\($ModLoad imklog\)/#\1/' /etc/rsyslog.conf
 
+# Mount necessary volumes
 VOLUME ["/sys/fs/cgroup", "/tmp", "/run"]
+
 CMD ["/lib/systemd/systemd"]
