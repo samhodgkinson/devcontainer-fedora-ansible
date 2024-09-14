@@ -29,7 +29,7 @@
     "sync.host": "",
     "sync.pathPrefix": "",
     "eslint.autoFixOnSave": true,
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": true,
     "flow.useNPMPackagedFlow": true,
     "prettier.singleQuote": true,
     "prettier.printWidth": 80,
@@ -58,5 +58,6 @@
       "titleBar.activeForeground": "#e7e7e7",
       "titleBar.inactiveBackground": "#bd930b",
       "titleBar.inactiveForeground": "#e7e7e799"
-    }
+    },
+    "ansible.python.interpreterPath": "/usr/bin/python3"
   }
