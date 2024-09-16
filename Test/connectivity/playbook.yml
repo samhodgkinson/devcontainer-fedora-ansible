@@ -1,0 +1,12 @@
+---
+
+- name: Check Connectivity
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Ping All Servers
+      action: ping
+    - debug: msg="Success"
+
+    - import_tasks: ../docker/docker-install/tasks/main.yml

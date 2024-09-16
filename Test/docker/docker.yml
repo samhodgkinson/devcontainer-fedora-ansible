@@ -1,0 +1,9 @@
+---
+
+- name: Setup Docker on Fedora Server 24
+  hosts: all
+  become: true
+
+  roles:
+    - docker-system-requirements
+    - docker-install
