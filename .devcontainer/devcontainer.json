@@ -1,8 +1,6 @@
 {
     "name": "Anisble",
-    "build": {
-        "dockerfile": "../docker/Dockerfile"
-    },
+    "image": "samhodgkinson/devcontainer-fedora-ansible:feature-Inital-Working-Branch",
     "remoteUser": "root",
     "mounts": [
         "source=${localEnv:SSH_AUTH_SOCK},target=/root/.ssh/agent.sock,type=bind"
