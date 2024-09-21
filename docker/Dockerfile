@@ -1,5 +1,10 @@
 FROM fedora:40
+
 LABEL maintainer="Sam Hodgkinson"
+LABEL version="1.0.0"
+LABEL description="A devcontainer with all the prerequisites in place to start using Ansible."
+LABEL documentation ="https://github.com/samhodgkinson/docker-ansible-image"
+LABEL repository="https://hub.docker.com/r/samhodgkinson/devcontainer-fedora-ansible"
 
 ARG DEBIAN_FRONTEND=noninteractive
 
