@@ -38,6 +38,7 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
             type=sha
+            type=raw,value={{date 'YYYYMMDD'}}
 
       - name: Build and push Docker image
         id: push
@@ -48,5 +49,6 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/devcontainer-fedora-ansible:latest
           labels: ${{ steps.meta.outputs.labels }}
+
 
 
