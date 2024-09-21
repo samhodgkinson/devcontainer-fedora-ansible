@@ -3,7 +3,7 @@ name: Publish Docker image (Docker Hub)
 on:
   push:
     branches:
-      - feature/*
+      - main
 
 jobs:
   push_to_registry:
