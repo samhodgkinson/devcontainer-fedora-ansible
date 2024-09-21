@@ -1,6 +1,5 @@
 FROM fedora:40
 LABEL maintainer="Sam Hodgkinson"
-LABEL
 
 ARG DEBIAN_FRONTEND=noninteractive
 
