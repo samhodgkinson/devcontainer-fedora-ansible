@@ -7,9 +7,8 @@
     ],
     "postCreateCommand": "chmod 600 /root/.ssh/agent.sock && ssh-keyscan github.com >> /root/.ssh/known_hosts",
     "remoteEnv": {
-            "SSH_AUTH_SOCK": "/root/.ssh/agent.sock"
+        "SSH_AUTH_SOCK": "/root/.ssh/agent.sock"
     },
-    "overrideCommand": false,
     "customizations": {
         "vscode": {
             "settings": {
