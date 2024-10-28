@@ -19,9 +19,19 @@
                 "extensions": [
                     "ms-azuretools.vscode-docker",
                     "ms-vscode-remote.remote-containers",
-                    "redhat.ansible",
                     "github.copilot",
                     "github.copilot-chat",
+                    "github.vscode-github-actions",
+                    "redhat.vscode-yaml",
+                    "esbenp.prettier-vscode",
+                    "PascalReitermann93.vscode-yaml-sort",
+                    "redhat.ansible",
+                    "valentjn.vscode-ansible-vault",
+                    "usernamehw.errorlens",
+                    "mikestead.dotenv",
+                    "ms-python.python",
+                    "wholroyd.jinja",
+                    "eamodio.gitlens",
                     "github.vscode-github-actions"
                 ]
             }

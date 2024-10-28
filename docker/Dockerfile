@@ -40,8 +40,9 @@ RUN dnf -y update \
   && dnf autoremove -y \
   && rm -rf /usr/share/doc /usr/share/man
 
-# Install Ansible Core via Pip
-RUN pip3 install ansible-core==${ANSIBLE_VERSION}
+# Install Ansible Core and Ansible Lint via Pip
+RUN pip3 install ansible-core==${ANSIBLE_VERSION} ansible-lint
+
 
 # The imklog module is responsible for reading kernel log messages, and by commenting it out, it prevents the rsyslog service from loading that module and reduces resources needed by the container
 RUN sed -i 's/^\($ModLoad imklog\)/#\1/' /etc/rsyslog.conf
