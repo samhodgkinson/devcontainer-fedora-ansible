@@ -24,7 +24,7 @@
   "terminal.integrated.fontFamily": "monospace",
   "terminal.integrated.cursorStyle": "line",
   "workbench.welcome.enabled": false,
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.iconTheme": "vs-seti" ,
   "material-icon-theme.showUpdateMessage": false,
   "sync.host": "",
   "sync.pathPrefix": "",
